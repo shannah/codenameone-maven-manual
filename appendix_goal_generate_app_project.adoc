@@ -56,7 +56,7 @@ See <<migrate-existing-project>> for examples using this goal to migrate an exis
 [#project-templates]
 ==== Project Templates
 
-When using a <<cn1app-archetype>> maven project as the `sourceProject` parameter, the project will be treated project template template, and perform some basic processing of the source files as necessary convert the template into a *real* project.  This includes replacing all occurrences of `${mainName}` and `{$packageName}` in project sources with the value of the `mainName` and `packageName` parameters provided on the command-line.
+When using a <<cn1app-archetype>> maven project as the `sourceProject` parameter, the project will be treated project template template, and perform some basic processing of the source files as necessary convert the template into a *real* project.  This includes replacing all occurrences of `${mainName}` and `${packageName}` in project sources with the value of the `mainName` and `packageName` parameters provided on the command-line.
 
 Additionally any occurrences of `__mainName__` and `__packagePath__` in file or directory names will be swapped with the values of `mainName` and `packagePath` (which is automatically derived from `packageName` by substituting '.' with file separators).
 

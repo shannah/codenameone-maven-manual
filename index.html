@@ -2068,7 +2068,7 @@ Substitute the <a href="https://search.maven.org/artifact/com.codenameone/codena
 <div class="sect3">
 <h4 id="project-templates">Project Templates</h4>
 <div class="paragraph">
-<p>When using a <a href="#cn1app-archetype">Codename One Application Project Archetype (cn1app-archetype)</a> maven project as the <code>sourceProject</code> parameter, the project will be treated project template template, and perform some basic processing of the source files as necessary convert the template into a <strong>real</strong> project.  This includes replacing all occurrences of <code>${mainName}</code> and <code>{$packageName}</code> in project sources with the value of the <code>mainName</code> and <code>packageName</code> parameters provided on the command-line.</p>
+<p>When using a <a href="#cn1app-archetype">Codename One Application Project Archetype (cn1app-archetype)</a> maven project as the <code>sourceProject</code> parameter, the project will be treated project template template, and perform some basic processing of the source files as necessary convert the template into a <strong>real</strong> project.  This includes replacing all occurrences of <code>${mainName}</code> and <code>${packageName}</code> in project sources with the value of the <code>mainName</code> and <code>packageName</code> parameters provided on the command-line.</p>
 </div>
 <div class="paragraph">
 <p>Additionally any occurrences of <code><em>mainName</em></code> and <code><em>packagePath</em></code> in file or directory names will be swapped with the values of <code>mainName</code> and <code>packagePath</code> (which is automatically derived from <code>packageName</code> by substituting '.' with file separators).</p>
