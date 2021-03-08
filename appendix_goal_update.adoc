@@ -1,0 +1,12 @@
+=== Update Codename One (`update`)
+
+Updates Codename One.  This will update the Codename One tools that reside inside `$HOME/.codenameone` such as the GUI builder and Control Center.
+
+==== Usage Example
+
+[source,bash]
+----
+mvn cn1:update
+----
+
+NOTE: This should not be confused with updating the version of the codename one dependencies in your application project.  To update the version of codename one that your project uses, you should open the `pom.xml` of the root module, and set the `<cn1.version>` property to the https://search.maven.org/artifact/com.codenameone/codenameone-maven-plugin[latest version of Codename One available on Maven central].
