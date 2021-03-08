@@ -185,8 +185,6 @@ Therefore, when adding dependencies into your app, you'll almost always place th
 
 TIP: You can add dependencies without needing to modify XML configuration files using the Control Center.  See <<managing-addons-in-control-center>>.
 
-See <<managing-addons-in-control-center>> for an example adding this same library to your project using the Codename One Control Center.
-
 .When to use the "other" pom.xml Files
 [sidebar]
 ****
@@ -241,7 +239,7 @@ The *correct* `<dependencies>` section, is located near the top of the file.  Yo
 
 This is a special marker that is used by some of the Codename One tooling to help it locate the optimal place to inject dependencies.
 
-**DO NOT REMOTE THIS COMMENT**.  Just add your dependency snippet somewhere before or after it.
+**DO NOT REMOVE THIS COMMENT**.  Just add your dependency snippet somewhere before or after it.
 ====
 
 ==== Compatibility with Codename One
