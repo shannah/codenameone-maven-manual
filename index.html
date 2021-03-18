@@ -446,6 +446,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>Codename One Maven Developer Guide</h1>
 <div class="details">
 <span id="author" class="author">Steve Hannah</span><br>
+<span id="revdate">lcdcd</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -2083,19 +2084,23 @@ Substitute the <a href="https://search.maven.org/artifact/com.codenameone/codena
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">mainName</dt>
+<dt class="hdlist1">template.mainName</dt>
 <dd>
 <p>The name of the main class that is currently used in this project.  This property is not required if the project is already using the <code><em>mainName</em></code> placeholder in the file name that contains the main class, and the <code>${mainName}</code> placeholder in any source code referring to the main class.</p>
 <div class="paragraph">
 <p>Often times it is just easier to specify this property here rather than injecting placeholders into the template source base, because that way the template itself can be used as a valid project.</p>
 </div>
 </dd>
-<dt class="hdlist1">packageName</dt>
+<dt class="hdlist1">template.packageName</dt>
 <dd>
 <p>The package name for the app.  This property is not required if the project is already using the <code><em>packagePath</em></code> placeholder in directories containing your main package files, and the <code>${packageName}</code> placeholder in any source code that refers to the main package.</p>
 <div class="paragraph">
 <p>Often times it is just easier to specify this property here rather than injecting placeholders into the template source base, because that way the template itself can be used as a valid project.</p>
 </div>
+</dd>
+<dt class="hdlist1">template.type</dt>
+<dd>
+<p>Either <code>maven</code> or <code>ant</code>, depending on the project type.</p>
 </dd>
 <dt class="hdlist1">dependencies</dt>
 <dd>
@@ -2108,8 +2113,9 @@ Substitute the <a href="https://search.maven.org/artifact/com.codenameone/codena
 <h5 id="sample-generate-app-project-file">Sample <code>generate-app-project.rpf</code> file</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="rpf">mainName=MyApp
-packageName=com.example
+<pre class="CodeRay highlight"><code data-lang="rpf">template.mainName=MyApp
+template.packageName=com.example
+template.type=maven
 
 [dependencies]
 ====
@@ -3215,7 +3221,7 @@ favoriteColor=Brown</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-03-08 13:21:49 -0800
+Last updated 2021-03-17 06:49:53 -0700
 </div>
 </div>
 </body>

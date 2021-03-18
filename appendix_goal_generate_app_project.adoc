@@ -66,15 +66,18 @@ The (optional) secret sauce that differentiates a regular Maven project from a M
 
 This file may contain the following properties:
 
-mainName::
+template.mainName::
 The name of the main class that is currently used in this project.  This property is not required if the project is already using the `__mainName__` placeholder in the file name that contains the main class, and the `${mainName}` placeholder in any source code referring to the main class.
 +
 Often times it is just easier to specify this property here rather than injecting placeholders into the template source base, because that way the template itself can be used as a valid project.
 
-packageName::
+template.packageName::
 The package name for the app.  This property is not required if the project is already using the `__packagePath__` placeholder in directories containing your main package files, and the `${packageName}` placeholder in any source code that refers to the main package.
 +
 Often times it is just easier to specify this property here rather than injecting placeholders into the template source base, because that way the template itself can be used as a valid project.
+
+template.type::
+Either `maven` or `ant`, depending on the project type.
 
 dependencies::
 An XML snippet containing any additional Maven dependencies that should be added to the project.  This is handy of the project template relies on other cn1libs that are on Maven central.
@@ -84,8 +87,9 @@ An XML snippet containing any additional Maven dependencies that should be added
 
 [source,rpf]
 ----
-mainName=MyApp
-packageName=com.example
+template.mainName=MyApp
+template.packageName=com.example
+template.type=maven
 
 [dependencies]
 ====
