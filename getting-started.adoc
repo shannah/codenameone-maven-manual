@@ -116,10 +116,15 @@ A minimal invocation of this goal would look like:
 
 [source,bash]
 ----
-mvn com.codenameone:codenameone-maven-plugin:7.0.8-b5:generate-app-project \
+# Specify your the version of the codenameone-maven-plugin.
+# Find the latest version at
+# https://search.maven.org/search?q=a:codenameone-maven-plugin
+CN1VERSION=7.0.13
+mvn com.codenameone:codenameone-maven-plugin:$CN1VERSION:generate-app-project \
   -DgroupId=YOUR_GROUP_ID \
   -DartifactId=YOUR_ARTIFACT_ID \
-  -DsourceProject=/path/to/your/project
+  -DsourceProject=/path/to/your/project \
+  -Dcn1Version=$CN1VERSION
 ----
 
 This will generate the new project in the current directory inside a folder named after the `artifactId` parameter.
@@ -158,6 +163,33 @@ If All goes well, your app should open in the Codename One simulator.
 Open the `myapp` folder as a project in NetBeans.  Then press the "Run" image:images/netbeans-run-icon.png[] button on the toolbar.
 
 If all goes well it should open in the Codename One simulator.
+
+
+==== Example: Migrating Kitchen Sink App
+
+Let's consider a concrete example, now.  Download the KitchenSink Ant project from https://github.com/codenameone/KitchenSink/archive/refs/tags/v1.0-cn7.0.11.zip[here] and extract it.
+
+The following is a bash script that uses curl to download this project as a zip file, and then converts it to a fully-functional Maven project.
+
+[source,bash]
+----
+CN1_VERSION=7.0.13
+curl -L https://github.com/codenameone/KitchenSink/archive/v1.0-cn7.0.11.zip > master.zip
+unzip master.zip
+rm master.zip
+mvn com.codenameone:codenameone-maven-plugin:${CN1_VERSION}:generate-app-project \
+  -DarchetypeGroupId=com.codename1 \
+  -DarchetypeArtifactId=cn1app-archetype \
+  -DarchetypeVersion=${CN1_VERSION} \
+  -DartifactId=kitchensink \
+  -DgroupId=com.example \
+  -Dversion=1.0-SNAPSHOT \
+  -DinteractiveMode=false \
+  -DsourceProject=KitchenSink-1.0-cn7.0.11
+----
+
+This will generate the maven project in a directory named "kitchensink" in the current working directory because of the `-DartifactId=kitchensink` directory.
+
 
 [#project-dependencies]
 === Adding Project Dependencies

@@ -769,10 +769,15 @@ View the source of the the cn1app-archetype project <a href="https://github.com/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">mvn com.codenameone:codenameone-maven-plugin:7.0.8-b5:generate-app-project \
+<pre class="CodeRay highlight"><code data-lang="bash"># Specify your the version of the codenameone-maven-plugin.
+# Find the latest version at
+# https://search.maven.org/search?q=a:codenameone-maven-plugin
+CN1VERSION=7.0.13
+mvn com.codenameone:codenameone-maven-plugin:$CN1VERSION:generate-app-project \
   -DgroupId=YOUR_GROUP_ID \
   -DartifactId=YOUR_ARTIFACT_ID \
-  -DsourceProject=/path/to/your/project</code></pre>
+  -DsourceProject=/path/to/your/project \
+  -Dcn1Version=$CN1VERSION</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -824,6 +829,35 @@ On Windows it would be <code>run.bat</code> instead of <code>run.sh</code>.
 </div>
 <div class="paragraph">
 <p>If all goes well it should open in the Codename One simulator.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_example_migrating_kitchen_sink_app">Example: Migrating Kitchen Sink App</h4>
+<div class="paragraph">
+<p>Let&#8217;s consider a concrete example, now.  Download the KitchenSink Ant project from <a href="https://github.com/codenameone/KitchenSink/archive/refs/tags/v1.0-cn7.0.11.zip">here</a> and extract it.</p>
+</div>
+<div class="paragraph">
+<p>The following is a bash script that uses curl to download this project as a zip file, and then converts it to a fully-functional Maven project.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">CN1_VERSION=7.0.13
+curl -L https://github.com/codenameone/KitchenSink/archive/v1.0-cn7.0.11.zip &gt; master.zip
+unzip master.zip
+rm master.zip
+mvn com.codenameone:codenameone-maven-plugin:${CN1_VERSION}:generate-app-project \
+  -DarchetypeGroupId=com.codename1 \
+  -DarchetypeArtifactId=cn1app-archetype \
+  -DarchetypeVersion=${CN1_VERSION} \
+  -DartifactId=kitchensink \
+  -DgroupId=com.example \
+  -Dversion=1.0-SNAPSHOT \
+  -DinteractiveMode=false \
+  -DsourceProject=KitchenSink-1.0-cn7.0.11</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will generate the maven project in a directory named "kitchensink" in the current working directory because of the <code>-DartifactId=kitchensink</code> directory.</p>
 </div>
 </div>
 </div>
@@ -1996,9 +2030,10 @@ Notice that we appended "-lib" to the <code>artifactId</code>.  This is because 
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">mvn com.codenameone:codenameone-maven-plugin:$CN1VERSION:generate-app-project \
-  -DsourceProject=/path/to/my/ProjectTemplate
-  -DgroupId=com.example
-  -DartifactId=myapp</code></pre>
+  -DsourceProject=/path/to/my/ProjectTemplate \
+  -DgroupId=com.example \
+  -DartifactId=myapp \
+  -Dcn1Version=$CN1VERSION</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -2021,6 +2056,10 @@ Substitute the <a href="https://search.maven.org/artifact/com.codenameone/codena
 <h4 id="_parameters">Parameters</h4>
 <div class="dlist">
 <dl>
+<dt class="hdlist1">cn1Version</dt>
+<dd>
+<p>The Codename One version that you want to use for the project.  This will be manifested as the <code>cn1.version</code> and <code>cn1.plugin.version</code> properties in the common/pom.xml file of the generated project.  If omitted it will default to the cn1Version that is hard-coded in the cn1app-archetype artifact.</p>
+</dd>
 <dt class="hdlist1">sourceProject</dt>
 <dd>
 <p>The path to an optional project template to use.  This may be either a legacy Ant project, or a Maven project that follows the structure of <a href="#cn1app-archetype">Codename One Application Project Archetype (cn1app-archetype)</a>.</p>
