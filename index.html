@@ -446,7 +446,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>Codename One Maven Developer Guide</h1>
 <div class="details">
 <span id="author" class="author">Steve Hannah</span><br>
-<span id="revdate">lcdcd</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -463,6 +462,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#project-dependencies">Adding Project Dependencies</a></li>
 </ul>
 </li>
+<li><a href="#updating">Updating Codename One</a></li>
 <li><a href="#creating-project-templates">Creating Project Templates</a>
 <ul class="sectlevel2">
 <li><a href="#_converting_a_codename_one_application_project_into_a_project_template">Converting a Codename One Application Project into a Project template</a></li>
@@ -491,10 +491,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#generate-app-project">Generate App Project (<code>generate-app-project</code>)</a></li>
 <li><a href="#create-gui-form">Create GUI Form (<code>create-gui-form</code>)</a></li>
 <li><a href="#_generate_cn1lib_project_generate_cn1lib_project">Generate cn1lib Project (<code>generate-cn1lib-project</code>)</a></li>
-</ul>
-</li>
-<li><a href="#_generate_desktop_app_wrapper_generate_desktop_app_wrapper">Generate Desktop App Wrapper (<code>generate-desktop-app-wrapper</code>)</a>
-<ul class="sectlevel2">
+<li><a href="#_generate_desktop_app_wrapper_generate_desktop_app_wrapper">Generate Desktop App Wrapper (<code>generate-desktop-app-wrapper</code>)</a></li>
 <li><a href="#_generate_gui_sources_generate_gui_sources">Generate GUI Sources (<code>generate-gui-sources</code>)</a></li>
 <li><a href="#_generate_native_interfaces_generate_native_interfaces">Generate Native Interfaces (<code>generate-native-interfaces</code>)</a></li>
 <li><a href="#guibuilder">GUIBuilder Goal (<code>guibuilder</code>)</a></li>
@@ -504,11 +501,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_open_designer_designer">Open Designer (<code>designer</code>)</a></li>
 <li><a href="#_prepare_simulator_classpath_prepare_simulator_classpath">Prepare Simulator Classpath (<code>prepare-simulator-classpath</code>)</a></li>
 <li><a href="#_open_settings_settings">Open Settings (<code>settings</code>)</a></li>
-</ul>
-</li>
-<li><a href="#_run_tests_test">Run Tests (<code>test</code>)</a>
-<ul class="sectlevel2">
-<li><a href="#_update_codename_one_update">Update Codename One (<code>update</code>)</a></li>
+<li><a href="#_run_tests_test">Run Tests (<code>test</code>)</a></li>
+<li><a href="#update-goal">Update Codename One (<code>update</code>)</a></li>
 </ul>
 </li>
 <li><a href="#api">Appendix C: API</a>
@@ -1097,6 +1091,103 @@ You can add dependencies without needing to modify XML configuration files using
 </div>
 </div>
 <div class="sect1">
+<h2 id="updating">Updating Codename One</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Codename One releases new versions weekly on Maven central.  It is recommended that you stay up to date with the latest version as much as possible to ensure compatibility with the Codename One build server, which is always running the latest version.</p>
+</div>
+<div class="paragraph">
+<p>You can use the <a href="#update-goal">update goal</a> to update both the Codename One libraries, and the Codename One dependencies in your project.</p>
+</div>
+<div class="paragraph">
+<p>e.g.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">mvn cn:update</code></pre>
+</div>
+</div>
+<h3 id="_cli_3" class="discrete">CLI</h3>
+<env cli></env>
+<div class="paragraph">
+<p>Alternatively you can use the <code>run.sh/run.bat</code> script to run this goal as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">./run.sh update</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Use <code>run.bat update</code> instead on Windows
+</td>
+</tr>
+</table>
+</div>
+<h3 id="_intellij_3" class="discrete">IntelliJ</h3>
+<env intellij></env>
+<div class="paragraph">
+<p>Alternatively you can click on the "Configuration" menu, and select "Tools" &gt; "Update Codename One" as shown here:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/intellij-update-codenameone.png" alt="intellij update codenameone">
+</div>
+</div>
+<div class="paragraph">
+<p>The press the <span class="image"><img src="images/intellij-run-icon.png" alt="Run"></span> button.</p>
+</div>
+<h3 id="_netbeans_3" class="discrete">NetBeans</h3>
+<env netbeans></env>
+<div class="paragraph">
+<p>Alternatively you can right click on the project in the project inspector, and select "Run Maven" &gt; "Update Codename One" as shown here:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/netbeans-update-codenameone.png" alt="netbeans update codenameone">
+</div>
+</div>
+<div class="paragraph">
+<p>Then press the <span class="image"><img src="images/netbeans-run-icon.png" alt="Run"></span> button.</p>
+</div>
+<h3 id="_manually_updating_the_pom_xml_file" class="discrete">Manually Updating the pom.xml file</h3>
+<div class="literalblock">
+<div class="content">
+<pre>You can also update your Codename One dependencies manually by modifying the `cn1.version` and `cn1.plugin.version` properties defined in your project's `pom.xml` file.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>E.g. Open the <code>pom.xml</code> file, and look for the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span style="color:#070;font-weight:bold">&lt;cn1.plugin.version&gt;</span>7.0.13<span style="color:#070;font-weight:bold">&lt;/cn1.plugin.version&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;cn1.version&gt;</span>7.0.13<span style="color:#070;font-weight:bold">&lt;/cn1.version&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Change these values to reflect the latest version of the <code>codenameone-maven-plugin</code> found <a href="https://search.maven.org/artifact/com.codenameone/codenameone-maven-plugin">here</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Updating the <code>cn1.plugin.version</code> and <code>cn1.version</code> properties manually will update the Maven dependencies for your project but it won&#8217;t update the other Codename One tools such as the GUI builder, and the Build Server Client, which are managed outside of Maven.  You should use the <a href="#update-goal">Update Codename One (<code>update</code>)</a> as described at the beginning of <a href="#updating">this section</a> to perform a "full" update.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="creating-project-templates">Creating Project Templates</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -1228,7 +1319,7 @@ Codename One supports a subset of JavaSE8, as well as addition APIs for accessin
 <p>Use the <code>cn1lib-archetype</code> for generating a new Codename One library project as follows:</p>
 </div>
 <div class="sect3">
-<h4 id="_cli_3">CLI</h4>
+<h4 id="_cli_4">CLI</h4>
 <env cli></env>
 <div class="listingblock">
 <div class="content">
@@ -1281,7 +1372,7 @@ Codename One supports a subset of JavaSE8, as well as addition APIs for accessin
 </div>
 </div>
 <div class="sect3">
-<h4 id="_intellij_3">IntelliJ</h4>
+<h4 id="_intellij_4">IntelliJ</h4>
 <env intellij></env>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1355,7 +1446,7 @@ Codename One supports a subset of JavaSE8, as well as addition APIs for accessin
 </div>
 </div>
 <div class="sect3">
-<h4 id="_netbeans_3">NetBeans</h4>
+<h4 id="_netbeans_4">NetBeans</h4>
 <env netbeans></env>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1451,7 +1542,7 @@ version, and package.  The "Package" is unimportant here as it isn&#8217;t used 
 </dl>
 </div>
 <div class="sect4">
-<h5 id="_intellij_4">IntelliJ</h5>
+<h5 id="_intellij_5">IntelliJ</h5>
 <env intellij></env>
 <div class="paragraph">
 <p>The project inspector will look like:</p>
@@ -1474,7 +1565,7 @@ version, and package.  The "Package" is unimportant here as it isn&#8217;t used 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_netbeans_4">NetBeans</h5>
+<h5 id="_netbeans_5">NetBeans</h5>
 <env netbeans></env>
 <div class="paragraph">
 <p>The project inspector will look like:</p>
@@ -1516,7 +1607,7 @@ version, and package.  The "Package" is unimportant here as it isn&#8217;t used 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_cli_4">CLI</h5>
+<h5 id="_cli_5">CLI</h5>
 <env cli></env>
 <div class="paragraph">
 <p>If we do a file listing on the project directory, it shows the following:</p>
@@ -1676,7 +1767,7 @@ version, and package.  The "Package" is unimportant here as it isn&#8217;t used 
 <div class="sect3">
 <h4 id="building-library">Building the Library</h4>
 <div class="sect4">
-<h5 id="_cli_5">CLI</h5>
+<h5 id="_cli_6">CLI</h5>
 <env cli></env>
 <div class="paragraph">
 <p>To build the library, simply run the "install" goal on the root module as follows:</p>
@@ -1688,14 +1779,14 @@ version, and package.  The "Package" is unimportant here as it isn&#8217;t used 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_intellij_5">IntelliJ</h5>
+<h5 id="_intellij_6">IntelliJ</h5>
 <env intellij></env>
 <div class="paragraph">
 <p>Press the "build" <span class="image"><img src="images/intellij-build-icon.png" alt="intellij build icon"></span> button on the toolbar.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_netbeans_5">NetBeans</h5>
+<h5 id="_netbeans_6">NetBeans</h5>
 <env netbeans></env>
 <div class="paragraph">
 <p>Right click on the "root" module in the project explorer and select "Build".</p>
@@ -2362,16 +2453,14 @@ Notice that the <code>artifactId</code> has an extra "-lib" appended.  I.e. it i
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_generate_desktop_app_wrapper_generate_desktop_app_wrapper">Generate Desktop App Wrapper (<code>generate-desktop-app-wrapper</code>)</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_generate_desktop_app_wrapper_generate_desktop_app_wrapper">Generate Desktop App Wrapper (<code>generate-desktop-app-wrapper</code>)</h3>
 <div class="paragraph">
 <p>Generates the bootstrapping wrapper class for the JavaSE desktop app.  This is used by the <code>javase</code> module of <a href="#cn1app-archetype">Codename One Application Project Archetype (cn1app-archetype)</a> projects.</p>
 </div>
 <div class="paragraph">
 <p>Generally you shouldn&#8217;t need to call this goal directly.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_generate_gui_sources_generate_gui_sources">Generate GUI Sources (<code>generate-gui-sources</code>)</h3>
@@ -3001,11 +3090,8 @@ If your project is using CSS it may not have a theme.res file, thus this goal wi
 <p>See <a href="#settings">Codename One Settings</a></p>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_run_tests_test">Run Tests (<code>test</code>)</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_run_tests_test">Run Tests (<code>test</code>)</h3>
 <div class="paragraph">
 <p>Runs Codename One unit tests.</p>
 </div>
@@ -3040,10 +3126,11 @@ Prevent tests from running using the <code>skipTests</code> flag.   E.g. <code>m
 </tr>
 </table>
 </div>
+</div>
 <div class="sect2">
-<h3 id="_update_codename_one_update">Update Codename One (<code>update</code>)</h3>
+<h3 id="update-goal">Update Codename One (<code>update</code>)</h3>
 <div class="paragraph">
-<p>Updates Codename One.  This will update the Codename One tools that reside inside <code>$HOME/.codenameone</code> such as the GUI builder and Control Center.</p>
+<p>Updates Codename One.  This will update the Codename One tools that reside inside <code>$HOME/.codenameone</code> such as the GUI builder and Control Center.  This will also attempt to update the <code>cn1.version</code> and <code>cn1.plugin.version</code> properties in your project&#8217;s pom.xml file.</p>
 </div>
 <div class="sect3">
 <h4 id="_usage_example_6">Usage Example</h4>
@@ -3052,17 +3139,22 @@ Prevent tests from running using the <code>skipTests</code> flag.   E.g. <code>m
 <pre class="CodeRay highlight"><code data-lang="bash">mvn cn1:update</code></pre>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-This should not be confused with updating the version of the codename one dependencies in your application project.  To update the version of codename one that your project uses, you should open the <code>pom.xml</code> of the root module, and set the <code>&lt;cn1.version&gt;</code> property to the <a href="https://search.maven.org/artifact/com.codenameone/codenameone-maven-plugin">latest version of Codename One available on Maven central</a>.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p><strong>Parameters</strong></p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">newVersion</dt>
+<dd>
+<p>(Optional) The version to update to.  This should be a version number available on Maven central.  Will accept a value of "LATEST" to cause it to resolve to the latest version available on Maven central.</p>
+<div class="paragraph">
+<p>If this parameter is omitted, then it will be implicitly set to "LATEST", but it will not update the <code>cn1.version</code> or <code>cn1.plugin.version</code> properties if they are currently set to a SNAPSHOT version.</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>See <a href="#updating">Updating Codename One</a> for more information about updating Codename One.</p>
 </div>
 </div>
 </div>
@@ -3118,7 +3210,7 @@ The Codename One source is open source.  Released under GPLv2 with Classpath Exc
 <div class="sect2">
 <h3 id="_kotlin_api_support">Kotlin API Support</h3>
 <div class="paragraph">
-<p>Codename One apps support the [Kotlin Standard Library](<a href="https://kotlinlang.org/api/latest/jvm/stdlib/" class="bare">https://kotlinlang.org/api/latest/jvm/stdlib/</a>).  Kotlin support is still relatively new, so are still discovering which libraries are compatible.  APIs that rely on reflection will not be supported, but most other libraries should work.</p>
+<p>Codename One apps support the <a href="https://kotlinlang.org/api/latest/jvm/stdlib/">Kotlin Standard Library</a>.  Kotlin support is still relatively new, so are still discovering which libraries are compatible.  APIs that rely on reflection will not be supported, but most other libraries should work.</p>
 </div>
 </div>
 <div class="sect2">
@@ -3260,7 +3352,7 @@ favoriteColor=Brown</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-03-17 06:49:53 -0700
+Last updated 2021-03-23 11:31:01 -0700
 </div>
 </div>
 </body>

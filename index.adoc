@@ -5,10 +5,12 @@ Steve Hannah
 :lang: en
 :toc: left
 :docinfo: private
-lcdcd
+
 include::introduction.adoc[]
 
 include::getting-started.adoc[]
+
+include::updating-cn1.adoc[]
 
 include::project-templates.adoc[]
 

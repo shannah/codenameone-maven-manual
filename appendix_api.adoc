@@ -19,7 +19,7 @@ Codename One apps do not support reflection because reflection makes it impossib
 
 === Kotlin API Support
 
-Codename One apps support the [Kotlin Standard Library](https://kotlinlang.org/api/latest/jvm/stdlib/).  Kotlin support is still relatively new, so are still discovering which libraries are compatible.  APIs that rely on reflection will not be supported, but most other libraries should work.
+Codename One apps support the https://kotlinlang.org/api/latest/jvm/stdlib/[Kotlin Standard Library].  Kotlin support is still relatively new, so are still discovering which libraries are compatible.  APIs that rely on reflection will not be supported, but most other libraries should work.
 
 === Add-on Libraries
 
