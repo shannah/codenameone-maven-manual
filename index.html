@@ -696,7 +696,7 @@ View the source of the the cn1app-archetype project <a href="https://github.com/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">mvn com.codenameone:codenameone-maven-plugin:7.0.8-b5:generate-app-project \
+<pre class="CodeRay highlight"><code data-lang="bash">mvn com.codenameone:codenameone-maven-plugin:7.0.17:generate-app-project \
   -DarchetypeGroupId=$archetypeGroupId \
   -DarchetypeArtifactId=$archetypeArtifactId \
   -DarchetypeVersion=$archetypeVersion \
@@ -717,7 +717,7 @@ View the source of the the cn1app-archetype project <a href="https://github.com/
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The <code>com.codenameone:codenameone-maven-plugin:7.0.8-b5:generate-app-project</code> argument is the fully-qualified goal name for the <code>generate-app-project</code>.  This is necessary since we aren&#8217;t running this goal in the context of any existing project.  You should adjust the version number (<code>7.0.8-b5</code>) to reflect the <a href="https://search.maven.org/search?q=a:codenameone-maven-plugin">latest available Codename One version on Maven Central</a>.</p>
+<p>The <code>com.codenameone:codenameone-maven-plugin:7.0.17:generate-app-project</code> argument is the fully-qualified goal name for the <code>generate-app-project</code>.  This is necessary since we aren&#8217;t running this goal in the context of any existing project.  You should adjust the version number (<code>7.0.17</code>) to reflect the <a href="https://search.maven.org/search?q=a:codenameone-maven-plugin">latest available Codename One version on Maven Central</a>.</p>
 </li>
 <li>
 <p>The <code>archetypeGroupId</code>, <code>archetypeArtifactId</code>, and <code>archetypeVersion</code> parameters are the same as when using the <code>archetype:generate</code> goal, and they will (almost) always refer to the <a href="#cn1app-archetype">Codename One Application Project Archetype (cn1app-archetype)</a>.</p>
@@ -766,7 +766,7 @@ View the source of the the cn1app-archetype project <a href="https://github.com/
 <pre class="CodeRay highlight"><code data-lang="bash"># Specify your the version of the codenameone-maven-plugin.
 # Find the latest version at
 # https://search.maven.org/search?q=a:codenameone-maven-plugin
-CN1VERSION=7.0.13
+CN1VERSION=7.0.17
 mvn com.codenameone:codenameone-maven-plugin:$CN1VERSION:generate-app-project \
   -DgroupId=YOUR_GROUP_ID \
   -DartifactId=YOUR_ARTIFACT_ID \
@@ -835,7 +835,7 @@ On Windows it would be <code>run.bat</code> instead of <code>run.sh</code>.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">CN1_VERSION=7.0.13
+<pre class="CodeRay highlight"><code data-lang="bash">CN1_VERSION=7.0.17
 curl -L https://github.com/codenameone/KitchenSink/archive/v1.0-cn7.0.11.zip &gt; master.zip
 unzip master.zip
 rm master.zip
@@ -1166,8 +1166,8 @@ Use <code>run.bat update</code> instead on Windows
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span style="color:#070;font-weight:bold">&lt;cn1.plugin.version&gt;</span>7.0.13<span style="color:#070;font-weight:bold">&lt;/cn1.plugin.version&gt;</span>
-<span style="color:#070;font-weight:bold">&lt;cn1.version&gt;</span>7.0.13<span style="color:#070;font-weight:bold">&lt;/cn1.version&gt;</span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span style="color:#070;font-weight:bold">&lt;cn1.plugin.version&gt;</span>7.0.17<span style="color:#070;font-weight:bold">&lt;/cn1.plugin.version&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;cn1.version&gt;</span>7.0.17<span style="color:#070;font-weight:bold">&lt;/cn1.version&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
