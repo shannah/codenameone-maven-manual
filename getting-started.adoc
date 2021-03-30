@@ -90,6 +90,8 @@ mvn com.codenameone:codenameone-maven-plugin:7.0.17:generate-app-project \
   -DsourceProject=/path/to/kotlin-example-app
 ----
 
+NOTE: This command is formatted for the bash prompt (e.g. Linux or Mac).  It will work on Windows also if you use bash.  If you are on Windows and are using PowerShell or the regular command prompt, then you'll need to modiy the command slightly.  In particular, the entire command would need to be on a single line.  (Remove the '\' at the end of each line, and merge lines together, with space between the command-line flags)
+
 Like the `archetype:generate` goal, this will create the project in a directory named after your specified artifact ID.  E.g. If your command included `-DartifactId=myapp`, then the project would be in a newly-created directory named "myapp".
 
 Some notes here:
@@ -126,6 +128,8 @@ mvn com.codenameone:codenameone-maven-plugin:$CN1VERSION:generate-app-project \
   -DsourceProject=/path/to/your/project \
   -Dcn1Version=$CN1VERSION
 ----
+
+NOTE: This command is formatted for the bash prompt (e.g. Linux or Mac).  It will work on Windows also if you use bash.  If you are on Windows and are using PowerShell or the regular command prompt, then you'll need to modiy the command slightly.  In particular, the entire command would need to be on a single line.  (Remove the '\' at the end of each line, and merge lines together, with space between the command-line flags)
 
 This will generate the new project in the current directory inside a folder named after the `artifactId` parameter.
 
@@ -187,6 +191,8 @@ mvn com.codenameone:codenameone-maven-plugin:${CN1_VERSION}:generate-app-project
   -DinteractiveMode=false \
   -DsourceProject=KitchenSink-1.0-cn7.0.11
 ----
+
+NOTE: This command is formatted for the bash prompt (e.g. Linux or Mac).  It will work on Windows also if you use bash.  If you are on Windows and are using PowerShell or the regular command prompt, then you'll need to modiy the command slightly.  In particular, the entire command would need to be on a single line.  (Remove the '\' at the end of each line, and merge lines together, with space between the command-line flags)
 
 This will generate the maven project in a directory named "kitchensink" in the current working directory because of the `-DartifactId=kitchensink` directory.
 
