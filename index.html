@@ -729,7 +729,7 @@ This command is formatted for the bash prompt (e.g. Linux or Mac).  It will work
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The <code>com.codenameone:codenameone-maven-plugin::generate-app-project</code> argument is the fully-qualified goal name for the <code>generate-app-project</code>.  This is necessary since we aren&#8217;t running this goal in the context of any existing project.  You should adjust the version number (<code>7.0.19</code>) to reflect the <a href="https://search.maven.org/search?q=a:codenameone-maven-plugin">latest available Codename One version on Maven Central</a>.</p>
+<p>The <code>com.codenameone:codenameone-maven-plugin:7.0.19:generate-app-project</code> argument is the fully-qualified goal name for the <code>generate-app-project</code>.  This is necessary since we aren&#8217;t running this goal in the context of any existing project.  You should adjust the version number (<code>7.0.19</code>) to reflect the <a href="https://search.maven.org/search?q=a:codenameone-maven-plugin">latest available Codename One version on Maven Central</a>.</p>
 </li>
 <li>
 <p>The <code>archetypeGroupId</code>, <code>archetypeArtifactId</code>, and <code>archetypeVersion</code> parameters are the same as when using the <code>archetype:generate</code> goal, and they will (almost) always refer to the <a href="#cn1app-archetype">Codename One Application Project Archetype (cn1app-archetype)</a>.</p>
@@ -778,7 +778,7 @@ This command is formatted for the bash prompt (e.g. Linux or Mac).  It will work
 <pre class="CodeRay highlight"><code data-lang="bash"># Specify your the version of the codenameone-maven-plugin.
 # Find the latest version at
 # https://search.maven.org/search?q=a:codenameone-maven-plugin
-CN1VERSION=
+CN1VERSION=7.0.19
 mvn com.codenameone:codenameone-maven-plugin:$CN1VERSION:generate-app-project \
   -DgroupId=YOUR_GROUP_ID \
   -DartifactId=YOUR_ARTIFACT_ID \
@@ -2437,12 +2437,14 @@ This goal is not run in an existing maven project directory, therefore we need t
 <p>We can run the <code>generate-cn1lib-project</code> goal as follows:</p>
 </div>
 <div class="listingblock">
+<div class="title">Maven command to migrate an Ant project to Maven.</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">cn1 com.codenameone:codenameone-maven-plugin:$CN1VERSION:generate-cn1lib-project \
+<pre class="CodeRay highlight"><code data-lang="bash">mvn com.codenameone:codenameone-maven-plugin:$CN1VERSION:generate-cn1lib-project \
   -DsourceProject=/path/to/MyLegacyAntLibraryProject \
   -DgroupId=com.example \
   -DartifactId=my-maven-lib \
-  -Dversion=1.0-SNAPSHOT</code></pre>
+  -Dversion=1.0-SNAPSHOT \
+  -U</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -2456,6 +2458,19 @@ Make sure you substitute the <a href="https://search.maven.org/search?q=a:codena
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>Some notes about this command as shown above:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>This command is formatted for Unix/Mac on multiple lines, using the <code>\</code> character to escape the new-lines.  On windows the command will need to be all one one line, and you should omit those <code>\</code> escape characters.</p>
+</li>
+<li>
+<p>The <code>-U</code> flag tells Maven to update its catalogs to ensure that it can find the <code>$CN1VERSION</code> that you specify.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p>If all goes well, you should find a new maven project generated in the "my-maven-lib" directory (named after the <code>artifactId</code> that you specified).</p>
