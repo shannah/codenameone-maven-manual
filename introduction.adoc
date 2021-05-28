@@ -20,7 +20,7 @@ Your selection will be remembered throughout the rest of the document.
 <env intellij></env>
 ++++
 
-These are IntelliJ IDEA instructions.  Click on the small gray buttons above and to the right to see these instructions for Command-line or NetBeans.
+These are IntelliJ IDEA instructions.  Click on the small gray buttons above and to the right to see these instructions for Command-line, Eclipse, or NetBeans.
 
 Your selection will be remembered throughout the rest of the document.
 
@@ -29,6 +29,15 @@ Your selection will be remembered throughout the rest of the document.
 <env netbeans></env>
 ++++
 
-These are NetBeans instructions.  Click on the small gray buttons above and to the right to see these instructions for IntelliJ or Command-line.
+These are NetBeans instructions.  Click on the small gray buttons above and to the right to see these instructions for IntelliJ, Eclipse, or Command-line.
+
+Your selection will be remembered throughout the rest of the document.
+
+==== Eclipse
+++++
+<env eclipse></env>
+++++
+
+These are Eclipse instructions.  Click on the small gray buttons above and to the right to see these instructions for IntelliJ, NetBeans or Command-line.
 
 Your selection will be remembered throughout the rest of the document.

@@ -53,7 +53,7 @@ Then press the image:images/netbeans-run-icon.png[Run] button.
 [discrete]
 === Manually Updating the pom.xml file
 
-  You can also update your Codename One dependencies manually by modifying the `cn1.version` and `cn1.plugin.version` properties defined in your project's `pom.xml` file.
+You can also update your Codename One dependencies manually by modifying the `cn1.version` and `cn1.plugin.version` properties defined in your project's `pom.xml` file.
 
 E.g. Open the `pom.xml` file, and look for the following:
 

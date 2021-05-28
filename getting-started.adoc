@@ -164,7 +164,54 @@ If All goes well, your app should open in the Codename One simulator.
 <env netbeans></env>
 ++++
 
+IMPORTANT: Before opening the project in NetBeans, be sure to copy the files in the _tools/netbeans_ directory into the root directory.  These are necessary for NetBeans to properly run, build, and debug the project.
+
 Open the `myapp` folder as a project in NetBeans.  Then press the "Run" image:images/netbeans-run-icon.png[] button on the toolbar.
+
+If all goes well it should open in the Codename One simulator.
+
+==== Eclipse
+++++
+<env eclipse></env>
+++++
+
+Open Eclipse, and select "File" > "Import.."
+
+image::images/eclipse-file-menu-import.png[]
+
+In the _Import_ dialog, expand _Maven_, select  _Existing Maven Projects_, and press _Next_.
+
+image::images/eclipse-import-dialog.png[]
+
+In the next panel, press the _Browse_ button, and, in the file dialog, select the "myapp" directory, and press _Next_.
+
+image::images/eclipse-import-browse-dialog.png[]
+
+The next panel should look similar to the one below.  Make sure all of the projects are "checked", and press _Finish_.
+
+image::images/eclipse-import-list-projects-dialog.png[]
+
+**Almost there, but not quite...**
+
+Next we need to import the Eclipse launch configurations located inside the _tools/eclipse_ directory.
+
+Select _File_ > _Import..._ again, but this time, in the _Import_ dialog, select _Run/Debug_ > _Launch Configurations_ and click _Next_.
+
+image::images/eclipse-import-launch-configurations-dialog.png[]
+
+In the next panel, press _Browse..._ then select the _tools/eclipse_ directory.
+
+image::images/eclipse-launch-configurations-file-dialog.png[]
+
+Then check the _eclipse_ option, and press _Finish_
+
+image::images/eclipse-import-launch-configurations-finish.png[]
+
+The "Run" button menu should now include options for all of the major build targets.  You can see them by pressing on the _Run_ button in the toolbar:
+
+image::images/eclipse-run-button-dropdown.png[]
+
+Select the _MyApp - Run Simulator_ option from this menu.
 
 If all goes well it should open in the Codename One simulator.
 

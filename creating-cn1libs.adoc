@@ -140,6 +140,31 @@ Once you have entered the information to your liking press the "Finish" button.
 
 This will create a new libary project for you at the location you specified.
 
+==== Eclipse
+++++
+<env eclipse></env>
+++++
+
+. Select "File" > "New Project..."
+. In the _New Project_ dialog, expand the _Maven_ item, and select _Maven Project_
++
+image::images/eclipse-new-project-wizard.png[]
++
+Then press "Next"
+. The next panel will look like the below image.  The default settings on this panel should be fine.  Press _Next_
++
+image::images/eclipse-new-project-wizard-new-maven-project.png[]
+. In the next panel, enter "cn1lib" in the _Filter_ field.  After a moment the _cn1lib-archetype_ should appear in the area below as shown here:
++
+image::images/eclipse-new-maven-project-cn1lib.png[]
++
+Select that option, and press _Next_
+. The next panel, allows you to enter your project details, such as group ID, and artifact ID.  Your project information here and then press _Finish_.
++
+image:images/eclipse-new-maven-project-details.png[]
+
+This will create a new libary project for you at the location you specified.
+
 ==== Project Structure
 
 Let's take a look at the project that was created.  It is a multi-module Maven project with the following modules:
@@ -200,6 +225,16 @@ The project inspector hides a few important files, however, so here is a screens
 
 image::images/netbeans-my-first-library-file-inspector-common.png[]
 
+===== Eclipse
+++++
+<env eclipse></env>
+++++
+
+The package explorer will look like:
+
+image::images/eclipse-cn1lib-package-explorer.png[]
+
+In this screenshot, I have expanded the _common/src/main/css_ and _common/src/main/java_ directories as this is where most of your module source will go.
 
 ===== CLI
 ++++
@@ -371,6 +406,17 @@ image::images/netbeans-right-click-build.png[]
 IMPORTANT: You must build the root module and not one of the submodules.
 
 Alternatively you could have just selected the "root" module in the project explorer and pressed the "build" image:images/netbeans-build-button.png[] button on the toolbar.
+
+===== Eclipse
+++++
+<env eclipse></env>
+++++
+
+Right click on the "root" module in the project explorer and select _Run as_ > _Maven Install_
+
+image::images/eclipse-build-cn1lib.png[]
+
+TIP: If the build fails for any reason, check to make sure that your project is using the latest version of the Codename One plugin.  You can do this by opening the _pom.xml_ file, and changing the `cn1.version` and `cn1.plugin.version` properties to reference the latest version.  Check for the latest version https://search.maven.org/artifact/com.codenameone/codenameone[here].
 
 
 ===== Building the Legacy .cnlib File

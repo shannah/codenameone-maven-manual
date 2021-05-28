@@ -15,6 +15,7 @@ body div.env,
 body.env-cli div.env-cli,
 body.env-intellij div.env-intellij,
 body.env-netbeans div.env-netbeans,
+body.env-eclipse div.env-eclipse,
  body.lang-java div.lang-java,
  body.lang-kotlin div.lang-kotlin  {
     display:block;
@@ -31,6 +32,7 @@ button.env-button,
 body.env-cli button.env-button[for='cli'],
 body.env-intellij button.env-button[for='intellij'],
 body.env-netbeans button.env-button[for='netbeans'],
+body.env-eclipse button.env-button[for='eclipse'],
 body.lang-java button.lang-button[for='java'],
 body.lang-kotlin button.lang-button[for='kotlin'] {
     background-color: #ccc;
