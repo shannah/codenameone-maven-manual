@@ -13,12 +13,17 @@ The contents of this file should look like:
 
 [source,rpf]
 ----
-mainName=$YOUR_PROJECT_MAIN_NAME
-packageName=$YOUR_PROJECT_PACKAGE_NAME
+template.mainName=$YOUR_PROJECT_MAIN_NAME
+template.packageName=$YOUR_PROJECT_PACKAGE_NAME
 
 [dependencies]
 ====
 ... YOUR PROJECT MAVEN DEPENDENCIES ...
+====
+
+[parentDependencies]
+====
+... YOUR PARENT PROJECT MAVEN DEPENDENCIES ...
 ====
 ----
 
@@ -31,7 +36,10 @@ $YOUR_PROJECT_PACKAGE_NAME::
 This should be the value of the `codename1.packageName` property in the project's `codenameone_settings.properties` file.
 
 ... YOUR PROJECT MAVEN DEPENDENCIES ...::
-Paste any maven dependencies that the project requires into this section.
+Paste any maven dependencies that the project requires into this section.  _These will be injected into the `<dependencies>` section of the common/pom.xml file_.
+
+... YOUR PARENT PROJECT MAVEN DEPENDENCIES ...::
+Paste any maven dependencies that the parent project requires into this section.  _These will be injected into the `<dependencies>` section of the pom.xml file_.
 
 See <<sample-generate-app-project-file>> for a more concrete example of the `generate-app-project.rpf`.
 

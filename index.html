@@ -489,6 +489,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_compliance_check_compliance_check">Compliance Check (<code>compliance-check</code>)</a></li>
 <li><a href="#_compile_css_css">Compile CSS (<code>css</code>)</a></li>
 <li><a href="#generate-app-project">Generate App Project (<code>generate-app-project</code>)</a></li>
+<li><a href="#clone">Clone Project (<code>clone</code>)</a></li>
 <li><a href="#create-gui-form">Create GUI Form (<code>create-gui-form</code>)</a></li>
 <li><a href="#_generate_cn1lib_project_generate_cn1lib_project">Generate cn1lib Project (<code>generate-cn1lib-project</code>)</a></li>
 <li><a href="#_generate_desktop_app_wrapper_generate_desktop_app_wrapper">Generate Desktop App Wrapper (<code>generate-desktop-app-wrapper</code>)</a></li>
@@ -1342,12 +1343,17 @@ Updating the <code>cn1.plugin.version</code> and <code>cn1.version</code> proper
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="rpf">mainName=$YOUR_PROJECT_MAIN_NAME
-packageName=$YOUR_PROJECT_PACKAGE_NAME
+<pre class="CodeRay highlight"><code data-lang="rpf">template.mainName=$YOUR_PROJECT_MAIN_NAME
+template.packageName=$YOUR_PROJECT_PACKAGE_NAME
 
 [dependencies]
 ====
 ... YOUR PROJECT MAVEN DEPENDENCIES ...
+====
+
+[parentDependencies]
+====
+... YOUR PARENT PROJECT MAVEN DEPENDENCIES ...
 ====</code></pre>
 </div>
 </div>
@@ -1366,7 +1372,11 @@ packageName=$YOUR_PROJECT_PACKAGE_NAME
 </dd>
 <dt class="hdlist1">&#8230;&#8203; YOUR PROJECT MAVEN DEPENDENCIES &#8230;&#8203;</dt>
 <dd>
-<p>Paste any maven dependencies that the project requires into this section.</p>
+<p>Paste any maven dependencies that the project requires into this section.  <em>These will be injected into the <code>&lt;dependencies&gt;</code> section of the common/pom.xml file</em>.</p>
+</dd>
+<dt class="hdlist1">&#8230;&#8203; YOUR PARENT PROJECT MAVEN DEPENDENCIES &#8230;&#8203;</dt>
+<dd>
+<p>Paste any maven dependencies that the parent project requires into this section.  <em>These will be injected into the <code>&lt;dependencies&gt;</code> section of the pom.xml file</em>.</p>
 </dd>
 </dl>
 </div>
@@ -2532,6 +2542,52 @@ template.type=maven
 </div>
 </div>
 <div class="sect2">
+<h3 id="clone">Clone Project (<code>clone</code>)</h3>
+<div class="paragraph">
+<p>Clones the current project as a new project with a different <em>groupId</em>, <em>artifactId</em>, <em>packageName</em>, and <em>mainName</em>.  Resulting project will be made available in the <em>common/target/generated-sources/cn1-cloned-projects</em> directory.</p>
+</div>
+<div class="sect3">
+<h4 id="_usage_example_2">Usage Example</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">mvn cn1:clone \
+  -DgroupId=com.example.newgroup \
+  -DartifactId=newapp \</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This command is formatted for the bash prompt (e.g. Linux or Mac).  It will work on Windows also if you use bash.  If you are on Windows and are using PowerShell or the regular command prompt, then you&#8217;ll need to modiy the command slightly.  In particular, the entire command would need to be on a single line.  (Remove the '\' at the end of each line, and merge lines together, with space between the command-line flags)
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In the above example, assuming all went well, it would output your project into a directory named <code>myapp</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_parameters_2">Parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">artifactId</dt>
+<dd>
+<p>The <code>artifactId</code> to use for the cloned project.</p>
+</dd>
+<dt class="hdlist1">groupId</dt>
+<dd>
+<p>The <code>groupId</code> to use for the cloned project.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="create-gui-form">Create GUI Form (<code>create-gui-form</code>)</h3>
 <div class="paragraph">
 <p>The <code>create-gui-form</code> goal will generate a GUI form that can be edited in the GUI builder.</p>
@@ -2606,7 +2662,7 @@ The paths above assume that this goal was run from the root multimodule maven pr
 <p>This is to assist in migrating Ant projects to Maven projects.  This won&#8217;t make any changes to the source Ant project.  It simply generates a new project using the <a href="#cn1lib-archetype">Codename One Library Project Archetype (cn1lib-archetype)</a> and copies all of files and configuration from the source project, into the new project.</p>
 </div>
 <div class="sect3">
-<h4 id="_usage_example_2">Usage Example</h4>
+<h4 id="_usage_example_3">Usage Example</h4>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -2756,7 +2812,7 @@ Notice that the <code>artifactId</code> has an extra "-lib" appended.  I.e. it i
 <p>See the Codename One Developer guide section on <a href="https://www.codenameone.com/developer-guide.html#_native_interfaces">native interfaces</a> for more information on creating native interfaces.</p>
 </div>
 <div class="sect3">
-<h4 id="_usage_example_3">Usage Example</h4>
+<h4 id="_usage_example_4">Usage Example</h4>
 <div class="paragraph">
 <p>Suppose we have created a native interface as the Java interface <code>com.mycompany.myapp.MyNative</code>, as described in the example in <a href="https://www.codenameone.com/developer-guide.html#_native_interfaces">native interfaces</a>.</p>
 </div>
@@ -2826,7 +2882,7 @@ Notice that the <code>artifactId</code> has an extra "-lib" appended.  I.e. it i
 </div>
 </div>
 <div class="sect3">
-<h4 id="_parameters_2">Parameters</h4>
+<h4 id="_parameters_3">Parameters</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">className</dt>
@@ -2863,7 +2919,7 @@ This goal is not currently used.  It was originally developed as a means of simp
 </div>
 </div>
 <div class="sect3">
-<h4 id="_parameters_3">Parameters</h4>
+<h4 id="_parameters_4">Parameters</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">template</dt>
@@ -3250,7 +3306,7 @@ Generally using this goal explicitly is a last resort.  The best solution for in
 </table>
 </div>
 <div class="sect3">
-<h4 id="_usage_example_4">Usage Example</h4>
+<h4 id="_usage_example_5">Usage Example</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">mvn cn1:install-cn1lib -Dfile=/path/to/MyLegacyLib.cn1lib</code></pre>
@@ -3282,7 +3338,7 @@ The generated project is not a <a href="#cn1lib-archetype">cn1lib-archetype</a> 
 </div>
 </div>
 <div class="sect3">
-<h4 id="_parameters_4">Parameters</h4>
+<h4 id="_parameters_5">Parameters</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">file</dt>
@@ -3337,7 +3393,7 @@ If your project is using CSS it may not have a theme.res file, thus this goal wi
 </table>
 </div>
 <div class="sect3">
-<h4 id="_usage_example_5">Usage Example</h4>
+<h4 id="_usage_example_6">Usage Example</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">mvn cn1:designer</code></pre>
@@ -3409,7 +3465,7 @@ Prevent tests from running using the <code>skipTests</code> flag.   E.g. <code>m
 <p>Updates Codename One.  This will update the Codename One tools that reside inside <code>$HOME/.codenameone</code> such as the GUI builder and Control Center.  This will also attempt to update the <code>cn1.version</code> and <code>cn1.plugin.version</code> properties in your project&#8217;s pom.xml file.</p>
 </div>
 <div class="sect3">
-<h4 id="_usage_example_6">Usage Example</h4>
+<h4 id="_usage_example_7">Usage Example</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">mvn cn1:update</code></pre>

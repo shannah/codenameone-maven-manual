@@ -11,6 +11,8 @@ include::appendix_goal_css.adoc[]
 
 include::appendix_goal_generate_app_project.adoc[]
 
+include::appendix_goal_clone.adoc[]
+
 include::appendix_goal_create_gui_form.adoc[]
 
 include::appendix_goal_generate_cn1lib_project.adoc[]
